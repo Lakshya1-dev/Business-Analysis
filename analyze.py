@@ -38,6 +38,9 @@ def main():
     df.sort_values('Trade_Date', inplace=True)
     df.reset_index(drop=True, inplace=True)
 
+    df['Titan_Close'] = pd.to_numeric(df['Titan_Close'], errors='coerce')
+    df['Gold_Close'] = pd.to_numeric(df['Gold_Close'], errors='coerce')
+    df['Titan_30d_MA'] = pd.to_numeric(df['Titan_30d_MA'], errors='coerce')
     # Step 2: Drop rows with NaN (due to lag/moving average at start)
     original_len = len(df)
     df.dropna(inplace=True)
